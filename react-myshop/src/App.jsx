@@ -1,19 +1,20 @@
-// import { useState } from 'react'
-
 import './App.css'
-import Header from '../src/components/Header/Header'
-import Footer from '../src/components/Footer/Footer'
-import Banner from '../src/components/Banner/Banner'
-import CardList from '../src/components/CardList/CardList'
+import Header from '../src/components/Header/Header';
+import Footer from '../src/components/Footer/Footer';
+import Banner from '../src/components/Banner/Banner';
+import CardList from '../src/components/CardList/CardList';
+
+import { useState } from 'react';
+import data from './fakeapi/data.json';
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const [searchBar, setsearchBar] = useState('');
 
   return (
     <>
-      <Header />
+      <Header searchBar={searchBar} setsearchBar={setsearchBar}/>
       <Banner />
-      <CardList />
+      <CardList products={data} searchBar={searchBar}/>
       <Footer />
 
       {/* <div className="card">

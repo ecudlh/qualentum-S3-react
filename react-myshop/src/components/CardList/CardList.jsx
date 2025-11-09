@@ -1,20 +1,22 @@
-import data from '../../fakeapi/data.json'
 import Card from '../Card/Card'
 import './CardList.css'
 
-function CardList() {
+function CardList({products, searchBar}) {
+    const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchBar.toLowerCase()))
+    
     return (
-        <div className="card-list">
-            {data.map(item => (
-                <Card
-                    key={item.id}
-                    title={item.title}
-                    description={item.description}
-                    price={item.price}
-                    img={item.image}
-                />
-            ))}
-        </div>
+        <>         
+            {filteredProducts.length > 0 ? (
+                <div className="card-list">
+                    {filteredProducts.map(product => (
+                        <Card
+                            key={product.id}
+                            item={product}
+                        />
+                    ))}
+                </div>
+            ) : (<p className="no-results-container">No se encontraron productos con ese texto de búsqueda</p>)};
+        </>
     );
 }
 
