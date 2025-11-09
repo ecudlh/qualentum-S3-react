@@ -1,0 +1,46 @@
+header {
+    background-color: #1c1c1c;
+    color: #fff;
+}
+
+.header__nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    align-items: center;
+    padding: 24px 48px;
+}
+
+.header__logo {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.header__menu {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.header__searchbar {
+    width: 100%;
+}
+
+.header__searchbar-input {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 24px;
+    padding: 8px 16px;
+    border: 1px solid #fff;
+}
+
+.header__icons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.header__icon {
+    width: 24px;
+    height: 24px;
+}
