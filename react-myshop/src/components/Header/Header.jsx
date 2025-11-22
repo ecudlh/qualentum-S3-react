@@ -39,7 +39,7 @@ function Header({searchBar, setsearchBar}) {
                     <div className="header__icon" onClick={toggleTheme}>
                         <img className="theme-icon" src={ThemeIcon} alt="" />
                     </div>
-                    <div className="header__icon">
+                    <div className="header__icon" onClick={() => navigate("/login")}>
                         <img src={UserIcon} alt="" />
                     </div>
                     <div className="header__icon">
