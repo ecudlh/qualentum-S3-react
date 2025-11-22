@@ -1,10 +1,10 @@
 import './Card.css'
-import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
+
+import { useNavigate } from "react-router-dom";
 
 function Card ({item}) {
     const {id, title, description, price, image} = item;
-    const {addToCart} = useContext(CartContext);
+    const navigate = useNavigate();
     
     return (
         <div className="card-item" key={id}>
@@ -14,7 +14,7 @@ function Card ({item}) {
                 <p className="card-item__description">{description}</p>
                 <div className="card-item__price">${price}</div>
             </div>
-            <button className="card-item__btn" onClick={() => addToCart(item)}>Agregar al carrito</button>
+            <button className="card-item__btn" onClick={() => navigate(`/product/${item.id}`)}>Ver producto</button>
         </div>
     );
 }
