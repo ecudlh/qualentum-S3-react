@@ -1,8 +1,12 @@
-import Card from '../Card/Card'
-import './CardList.css'
+import Card from '../Card/Card';
+import './CardList.css';
+import data from "../../fakeapi/data.json";
 
-function CardList({products, searchBar}) {
-    const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchBar.toLowerCase()))
+import { useOutletContext } from "react-router-dom";
+
+function CardList() {
+    const { searchBar } = useOutletContext();
+    const filteredProducts = data.filter((product) => product.title.toLowerCase().includes(searchBar.toLowerCase()))
     
     return (
         <>         
