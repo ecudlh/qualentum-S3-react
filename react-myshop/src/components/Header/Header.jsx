@@ -7,15 +7,17 @@ import ThemeIcon from '../../assets/icons/theme.svg';
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { ThemeContext } from '../../context/ThemeContext';
+import { useNavigate } from "react-router-dom";
 
 function Header({searchBar, setsearchBar}) {
     const {countProducts} = useContext(CartContext);
     const { darkMode, toggleTheme } = useContext(ThemeContext);
+    const navigate = useNavigate();
 
     return (
         <header className={darkMode ? 'header--dark' : 'header--light'}>
             <nav className="header__nav">
-                <div className="header__logo">MiTienda</div>
+                <div className="header__logo" onClick={() => navigate("/")}>MiTienda</div>
                 <ul className="header__menu">
                     <li className="header__menu--item"><a href="#">INICIO</a></li>
                     <li className="header__menu--item"><a href="#">CATEGORÍAS</a></li>
@@ -43,7 +45,7 @@ function Header({searchBar, setsearchBar}) {
                     <div className="header__icon">
                         <img src={HeartIcon} alt="" />
                     </div>
-                    <div className="header__icon header__icon-cart">
+                    <div className="header__icon header__icon-cart" onClick={() => navigate("/cart")}>
                         <img src={CartIcon} alt="" />
                         {countProducts > 0 && (
                             <div className="header__icon-number">{countProducts}</div>

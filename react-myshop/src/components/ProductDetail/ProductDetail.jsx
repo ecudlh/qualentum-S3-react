@@ -19,7 +19,7 @@ function ProductDetail() {
                 <h4 className="product-detail__title">{product.title}</h4>
                 <p className="product-detail__price">{product.price}</p>
                 <p className="product-detail__description">{product.description}</p>
-                <button className="product-detail-btn" onClick={addToCart}>Añadir a la cesta</button>
+                <button className="product-detail-btn" onClick={() => addToCart(product)}>Añadir a la cesta</button>
             </div>
         </div>
     );
