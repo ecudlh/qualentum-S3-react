@@ -3,7 +3,11 @@ import UserIcon from '../../assets/icons/user.svg';
 import CartIcon from '../../assets/icons/shopping-cart.svg';
 import HeartIcon from '../../assets/icons/heart.svg';
 
-function Header({searchBar, setsearchBar, countProducts}) {
+import { useContext } from 'react';
+import { cartContext } from '../../context/CartContext';
+
+function Header({searchBar, setsearchBar}) {
+    const {countProducts} = useContext(cartContext);
 
     return (
         <header className="header">

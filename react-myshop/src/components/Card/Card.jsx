@@ -1,7 +1,10 @@
 import './Card.css'
+import { useContext } from 'react';
+import { cartContext } from '../../context/CartContext';
 
-function Card ({item, setcountProducts}) {
+function Card ({item}) {
     const {id, title, description, price, image} = item;
+    const {setcountProducts} = useContext(cartContext);
     
     return (
         <div className="card-item" key={id}>

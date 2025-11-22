@@ -1,7 +1,7 @@
 import Card from '../Card/Card'
 import './CardList.css'
 
-function CardList({products, searchBar, setcountProducts, countProducts}) {
+function CardList({products, searchBar}) {
     const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchBar.toLowerCase()))
     
     return (
@@ -12,8 +12,6 @@ function CardList({products, searchBar, setcountProducts, countProducts}) {
                         <Card
                             key={product.id}
                             item={product}
-                            setcountProducts={setcountProducts}
-                            countProducts={countProducts}
                         />
                     ))}
                 </div>

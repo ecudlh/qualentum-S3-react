@@ -3,19 +3,18 @@ import Header from '../src/components/Header/Header';
 import Footer from '../src/components/Footer/Footer';
 import Banner from '../src/components/Banner/Banner';
 import CardList from '../src/components/CardList/CardList';
+import data from './fakeapi/data.json';
 
 import { useState } from 'react';
-import data from './fakeapi/data.json';
 
 function App() {
   const [searchBar, setsearchBar] = useState('');
-  const [countProducts, setcountProducts] = useState(0);
 
   return (
     <>
-      <Header searchBar={searchBar} setsearchBar={setsearchBar} countProducts={countProducts}/>
+      <Header searchBar={searchBar} setsearchBar={setsearchBar} />
       <Banner />
-      <CardList products={data} searchBar={searchBar} setcountProducts={setcountProducts}/>
+      <CardList products={data} searchBar={searchBar}/>
       <Footer />
 
       {/* <div className="card">
