@@ -2,7 +2,9 @@
     width: 100%;
     margin: 0 auto;
     padding-inline: 32px;
-    padding-bottom: 40px;
+    padding-block: 40px;
+    background-color: #fff;
+    border-radius: 8px;
 }
 
 h2 {
@@ -15,8 +17,9 @@ h2 {
     gap: 16px;
 }
 
-.cart-empty {
-    padding-bottom: 40px;
+.cart-total {
+    padding-top: 32px;
+    font-weight: 600;
 }
 
 @media screen and (min-width: 768px) {

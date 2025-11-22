@@ -15,7 +15,7 @@ function CardList({products, searchBar}) {
                         />
                     ))}
                 </div>
-            ) : (<p className="no-results-container">No se encontraron productos con ese texto de búsqueda</p>)};
+            ) : (<p className="no-results-container">No se encontraron productos con ese texto de búsqueda</p>)}
         </>
     );
 }
