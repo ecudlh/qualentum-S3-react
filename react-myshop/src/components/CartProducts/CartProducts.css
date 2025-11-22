@@ -23,6 +23,35 @@ h2 {
     font-weight: 600;
 }
 
+.cart-btn-container {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.cart-btn {
+    padding: 12px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 600;
+}
+
+.cart-btn-buy {
+    background-color: #0026ff;  
+}
+
+.cart-btn-reset {
+    background-color: #d50000; 
+}
+
+.cart-btn-buy:hover {
+    background-color: #001fce;  
+}
+
+.cart-btn-reset:hover {
+    background-color: #a50000; 
+}
+
 @media screen and (min-width: 768px) {
     .cart-list-container {
         width: 700px;

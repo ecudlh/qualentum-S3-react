@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 
 function CartProducts() {
-    const {cart, total} = useContext(CartContext);
+    const {cart, total, resetCart, buyBtn} = useContext(CartContext);
     const numberItemsCart = cart.length
 
     return(
@@ -27,7 +27,10 @@ function CartProducts() {
                     <p>El carrito está vacío</p>
                 </div>
             )}
-            
+            <div className="cart-btn-container">
+                <button className="cart-btn cart-btn-buy" onClick={buyBtn}>Hacer pedido</button>
+                <button className="cart-btn cart-btn-reset" onClick={resetCart}>Resetear carrito</button>
+            </div>
         </div>
     );
 }

@@ -26,6 +26,20 @@ export function CartProvider({ children }) {
         return 0;
     });
 
+    // Reset cart
+    const resetCart = () => {
+        setCart([]);
+        setcountProducts(0);
+        setTotal(0);
+        localStorage.removeItem("cart");
+    };
+
+    // Click buy btn
+    const buyBtn = () => {
+        alert("Se redirigirá a la pasarela de pago...");
+        resetCart(); 
+    };
+
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
@@ -55,7 +69,7 @@ export function CartProvider({ children }) {
     };    
 
     return (
-        <CartContext.Provider value={{ cart, countProducts, total, addToCart }}>
+        <CartContext.Provider value={{ cart, countProducts, total, addToCart, resetCart, buyBtn }}>
             {children}
         </CartContext.Provider>
     );
