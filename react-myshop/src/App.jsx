@@ -1,33 +1,23 @@
 import './App.css'
 import Header from '../src/components/Header/Header';
-import Footer from '../src/components/Footer/Footer';
 import Banner from '../src/components/Banner/Banner';
 import CardList from '../src/components/CardList/CardList';
+import CartProducts from './components/CartProducts/CartProducts';
+import Footer from '../src/components/Footer/Footer';
 import data from './fakeapi/data.json';
 
 import { useState } from 'react';
 
 function App() {
   const [searchBar, setsearchBar] = useState('');
+  const [showCart, setShowCart] = useState(false)
 
   return (
     <>
-      <Header searchBar={searchBar} setsearchBar={setsearchBar} />
+      <Header searchBar={searchBar} setsearchBar={setsearchBar} setShowCart={setShowCart} />
       <Banner />
-      <CardList products={data} searchBar={searchBar}/>
+      {showCart ? (<CartProducts/> ) : (<CardList products={data} searchBar={searchBar}/>)}
       <Footer />
-
-      {/* <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
     </>
   )
 }

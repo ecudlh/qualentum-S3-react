@@ -1,0 +1,26 @@
+.cart-list-container {
+    width: 100%;
+    margin: 0 auto;
+    padding-inline: 32px;
+    padding-bottom: 40px;
+}
+
+h2 {
+    margin-bottom: 24px;
+}
+
+.cart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cart-empty {
+    padding-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) {
+    .cart-list-container {
+        width: 700px;
+    }
+}

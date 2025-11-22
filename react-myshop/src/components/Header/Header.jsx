@@ -4,15 +4,15 @@ import CartIcon from '../../assets/icons/shopping-cart.svg';
 import HeartIcon from '../../assets/icons/heart.svg';
 
 import { useContext } from 'react';
-import { cartContext } from '../../context/CartContext';
+import { CartContext } from '../../context/CartContext';
 
-function Header({searchBar, setsearchBar}) {
-    const {countProducts} = useContext(cartContext);
+function Header({searchBar, setsearchBar, setShowCart}) {
+    const {countProducts} = useContext(CartContext);
 
     return (
         <header className="header">
             <nav className="header__nav">
-                <div className="header__logo">MiTienda</div>
+                <div className="header__logo" onClick={() => setShowCart(false)}>MiTienda</div>
                 <ul className="header__menu">
                     <li className="header__menu--item"><a href="#">INICIO</a></li>
                     <li className="header__menu--item"><a href="#">CATEGORÍAS</a></li>
@@ -37,7 +37,7 @@ function Header({searchBar, setsearchBar}) {
                     <div className="header__icon">
                         <img src={HeartIcon} alt="" />
                     </div>
-                    <div className="header__icon header__icon-cart">
+                    <div className="header__icon header__icon-cart" onClick={() => setShowCart(true)}>
                         <img src={CartIcon} alt="" />
                         {countProducts > 0 && (
                             <div className="header__icon-number">{countProducts}</div>

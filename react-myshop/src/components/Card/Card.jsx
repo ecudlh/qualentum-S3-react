@@ -1,10 +1,10 @@
 import './Card.css'
 import { useContext } from 'react';
-import { cartContext } from '../../context/CartContext';
+import { CartContext } from '../../context/CartContext';
 
 function Card ({item}) {
     const {id, title, description, price, image} = item;
-    const {setcountProducts} = useContext(cartContext);
+    const {addToCart} = useContext(CartContext);
     
     return (
         <div className="card-item" key={id}>
@@ -14,7 +14,7 @@ function Card ({item}) {
                 <p className="card-item__description">{description}</p>
                 <div className="card-item__price">${price}</div>
             </div>
-            <button className="card-item__btn" onClick={() => setcountProducts((prev) => prev + 1)}>Agregar al carrito</button>
+            <button className="card-item__btn" onClick={() => addToCart(item)}>Agregar al carrito</button>
         </div>
     );
 }
