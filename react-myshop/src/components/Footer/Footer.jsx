@@ -1,8 +1,13 @@
 import './Footer.css'
 
+import { useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
+
 function Footer() {
+    const { darkMode} = useContext(ThemeContext);
+
     return (
-        <footer>
+        <footer className={darkMode ? 'footer--dark' : 'footer--light'}>
             <div className="footer__data">
                 <div className="footer__data-content footer__contact">
                     <h3>Contacto</h3>

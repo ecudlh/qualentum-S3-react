@@ -1,5 +1,15 @@
 header {
+    position: fixed;
+    width: 100%;
+}
+
+.header--dark {
     background-color: #1c1c1c;
+    color: #fff;
+}
+
+.header--light {
+    background-color: #494949;
     color: #fff;
 }
 
@@ -63,4 +73,9 @@ header {
     border-radius: 50%;
     background-color: #0026ff;
     font-size: 12px;
+}
+
+.theme-icon {
+    width: 24px;
+    height: 24px;
 }

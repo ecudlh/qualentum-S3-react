@@ -2,15 +2,18 @@ import './Header.css';
 import UserIcon from '../../assets/icons/user.svg';
 import CartIcon from '../../assets/icons/shopping-cart.svg';
 import HeartIcon from '../../assets/icons/heart.svg';
+import ThemeIcon from '../../assets/icons/theme.svg';
 
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
+import { ThemeContext } from '../../context/ThemeContext';
 
 function Header({searchBar, setsearchBar, setShowCart}) {
     const {countProducts} = useContext(CartContext);
+    const { darkMode, toggleTheme } = useContext(ThemeContext);
 
     return (
-        <header className="header">
+        <header className={darkMode ? 'header--dark' : 'header--light'}>
             <nav className="header__nav">
                 <div className="header__logo" onClick={() => setShowCart(false)}>MiTienda</div>
                 <ul className="header__menu">
@@ -31,6 +34,9 @@ function Header({searchBar, setsearchBar, setShowCart}) {
                 </div>
 
                 <div className="header__icons">
+                    <div className="header__icon" onClick={toggleTheme}>
+                        <img className="theme-icon" src={ThemeIcon} alt="" />
+                    </div>
                     <div className="header__icon">
                         <img src={UserIcon} alt="" />
                     </div>

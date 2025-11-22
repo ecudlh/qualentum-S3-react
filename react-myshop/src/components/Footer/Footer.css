@@ -1,5 +1,10 @@
-footer {
+.footer--dark {
     background-color: #1c1c1c;
+    color: #fff;
+}
+
+.footer--light {
+    background-color: #494949;
     color: #fff;
 }
 
