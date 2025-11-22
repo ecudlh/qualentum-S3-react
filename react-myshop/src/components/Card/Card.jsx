@@ -1,6 +1,6 @@
 import './Card.css'
 
-function Card ({item}) {
+function Card ({item, setcountProducts}) {
     const {id, title, description, price, image} = item;
     
     return (
@@ -11,6 +11,7 @@ function Card ({item}) {
                 <p className="card-item__description">{description}</p>
                 <div className="card-item__price">${price}</div>
             </div>
+            <button className="card-item__btn" onClick={() => setcountProducts((prev) => prev + 1)}>Agregar al carrito</button>
         </div>
     );
 }

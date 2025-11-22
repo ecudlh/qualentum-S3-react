@@ -3,7 +3,7 @@ import UserIcon from '../../assets/icons/user.svg';
 import CartIcon from '../../assets/icons/shopping-cart.svg';
 import HeartIcon from '../../assets/icons/heart.svg';
 
-function Header({searchBar, setsearchBar}) {
+function Header({searchBar, setsearchBar, countProducts}) {
 
     return (
         <header className="header">
@@ -33,8 +33,11 @@ function Header({searchBar, setsearchBar}) {
                     <div className="header__icon">
                         <img src={HeartIcon} alt="" />
                     </div>
-                    <div className="header__icon">
+                    <div className="header__icon header__icon-cart">
                         <img src={CartIcon} alt="" />
+                        {countProducts > 0 && (
+                            <div className="header__icon-number">{countProducts}</div>
+                        )}
                     </div>
                 </div>
             </nav>

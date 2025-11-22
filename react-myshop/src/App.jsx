@@ -9,12 +9,13 @@ import data from './fakeapi/data.json';
 
 function App() {
   const [searchBar, setsearchBar] = useState('');
+  const [countProducts, setcountProducts] = useState(0);
 
   return (
     <>
-      <Header searchBar={searchBar} setsearchBar={setsearchBar}/>
+      <Header searchBar={searchBar} setsearchBar={setsearchBar} countProducts={countProducts}/>
       <Banner />
-      <CardList products={data} searchBar={searchBar}/>
+      <CardList products={data} searchBar={searchBar} setcountProducts={setcountProducts}/>
       <Footer />
 
       {/* <div className="card">

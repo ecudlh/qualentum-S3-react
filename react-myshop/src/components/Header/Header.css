@@ -44,3 +44,21 @@ header {
     width: 24px;
     height: 24px;
 }
+
+.header__icon-cart {
+    position: relative;
+}
+
+.header__icon-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #0026ff;
+    font-size: 12px;
+}
