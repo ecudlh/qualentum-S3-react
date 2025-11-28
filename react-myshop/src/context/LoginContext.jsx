@@ -15,15 +15,16 @@ export function LoginProvider({ children }) {
 
     // Login
     const doLogin = (name, email) => {
-        setUser({ name, email });
+        const userRole = email.includes("@admin") ? "admin": "";
+        setUser({ name, email, userRole });
         setLogin(true);
         localStorage.setItem('login', 'true');
-        localStorage.setItem('user', JSON.stringify({ name, email }));
+        localStorage.setItem('user', JSON.stringify({ name, email, userRole }));
     };
 
     //Log out
     const doLogout = () => {
-        setUser({ name: '', email: '' });
+        setUser({ name: '', email: '', userRole: "" });
         setLogin(false);
         localStorage.removeItem('login');
         localStorage.removeItem('user');

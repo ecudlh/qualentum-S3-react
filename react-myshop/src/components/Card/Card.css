@@ -46,3 +46,24 @@
 .card-item__btn:hover {
     background-color: #001fcf;
 }
+
+.admin-buttons {
+    position: absolute;
+    margin-top: 16px;
+    margin-left: 16px;
+}
+
+.btn-card {
+    padding: 8px 12px;
+    border-radius: 4px;
+    background-color: #343434;
+    color: #fff;
+}
+
+.btn-card:hover {
+    background-color: #001fcf;
+}
+
+.edit-btn {
+    margin-right: 12px;
+}
