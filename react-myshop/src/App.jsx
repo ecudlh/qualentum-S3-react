@@ -6,6 +6,8 @@ import CartProducts from './components/CartProducts/CartProducts';
 import Login from './components/Login/Login';
 import Footer from '../src/components/Footer/Footer';
 import EditProductModal from './components/EditProductModal/EditProductModal';
+import AddProductModal from './components/AddProductModal/AddProductModal';
+import AddProductButton from './components/AddProductBtn/AddProductBtn';
 
 import { useState } from 'react';
 import { useContext } from 'react';
@@ -21,7 +23,9 @@ function App() {
       <Header searchBar={searchBar} setsearchBar={setsearchBar} />
       <Banner />
       <Outlet context={{ searchBar, setsearchBar }} />
+      <AddProductButton />
       <EditProductModal /> 
+      <AddProductModal />
       <Footer />
     </div>
   )

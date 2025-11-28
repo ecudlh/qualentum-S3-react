@@ -30,25 +30,9 @@ export default function EditProductModal() {
         <div className="modal-backdrop">
             <div className="modal">
                 <h2>Editar producto</h2>
-
-                <input
-                    name="title"
-                    value={form?.title || ""}
-                    onChange={handleChange}
-                />
-
-                <input
-                    name="price"
-                    value={form?.price || ""}
-                    onChange={handleChange}
-                />
-
-                <textarea
-                    name="description"
-                    value={form?.description || ""}
-                    onChange={handleChange}
-                />
-
+                <input name="title" value={form?.title || ""} onChange={handleChange} />
+                <input name="price" value={form?.price || ""} onChange={handleChange} />
+                <textarea name="description" value={form?.description || ""} onChange={handleChange} />
                 <button className="modal-btn save-btn" onClick={handleSubmit}>Guardar cambios</button>
                 <button className="modal-btn cancel-btn" onClick={closeEditModal}>Cancelar</button>
             </div>

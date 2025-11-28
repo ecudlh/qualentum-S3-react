@@ -6,6 +6,7 @@ export const ProductContext = createContext();
 export function ProductProvider({ children }) {
     const [products, setProducts] = useState([]);
     const [productToEdit, setProductToEdit] = useState(null);
+    const [addingProduct, setAddingProduct] = useState(false);
 
     useEffect(() => {
         setProducts(data);
@@ -30,12 +31,24 @@ export function ProductProvider({ children }) {
         setProductToEdit(null);
     };
 
-    const addProduct = () => {
-        console.log('agregar')
+    const openAddModal = () => {
+        setAddingProduct(true);
+    };
+
+    const closeAddModal = () => {
+        setAddingProduct(false);
+    };
+
+    const addProduct = (newProduct) => {
+        setProducts(prev => [
+            ...prev,
+            { ...newProduct, id: Date.now() } 
+        ]);
+        setAddingProduct(false);
     };
 
     return (
-        <ProductContext.Provider value={{ products, deleteProduct, openEditModal, closeEditModal, saveProduct, productToEdit, addProduct }}>
+        <ProductContext.Provider value={{ products, deleteProduct, openEditModal, closeEditModal, saveProduct, productToEdit, openAddModal, closeAddModal, addProduct, addingProduct }}>
             {children}
         </ProductContext.Provider>
     );
