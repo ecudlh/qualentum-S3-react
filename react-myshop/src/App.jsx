@@ -5,6 +5,7 @@ import CardList from '../src/components/CardList/CardList';
 import CartProducts from './components/CartProducts/CartProducts';
 import Login from './components/Login/Login';
 import Footer from '../src/components/Footer/Footer';
+import EditProductModal from './components/EditProductModal/EditProductModal';
 
 import { useState } from 'react';
 import { useContext } from 'react';
@@ -20,6 +21,7 @@ function App() {
       <Header searchBar={searchBar} setsearchBar={setsearchBar} />
       <Banner />
       <Outlet context={{ searchBar, setsearchBar }} />
+      <EditProductModal /> 
       <Footer />
     </div>
   )

@@ -1,15 +1,16 @@
 import './ProductDetail.css';
-import data from "../../fakeapi/data.json";
 
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { useParams, useNavigate } from "react-router-dom";
+import { ProductContext } from '../../context/ProductContext';
 
 function ProductDetail() {
     const {addToCart} = useContext(CartContext);
     const { id } = useParams();
     const navigate = useNavigate();
-    const product = data.find(p => p.id === parseInt(id));
+    const { products } = useContext(ProductContext);
+    const product = products.find(p => p.id === parseInt(id));
 
     return(
         <div className="product-detail-container">

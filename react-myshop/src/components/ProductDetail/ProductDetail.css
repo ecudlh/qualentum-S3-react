@@ -22,6 +22,7 @@
 
 .product-detail__content {
     padding-block: 24px;
+    padding-right: 24px;
 }
 
 .product-detail__title {
@@ -34,12 +35,14 @@
     color: #0026ff;
     font-weight: 700;
     margin-bottom: 24px;
+    text-align: left;
 }
 
 .product-detail__description {
     color: #4e4e4e;
     font-size: 14px;
     margin-bottom: 24px;
+    text-align: left;
 }
 
 .product-detail-btn {

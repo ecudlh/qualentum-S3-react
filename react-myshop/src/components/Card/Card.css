@@ -26,12 +26,14 @@
     flex: 1;
     color: #4e4e4e;
     font-size: 14px;
+    text-align: left;
 }
 
 .card-item__price {
     color: #0026ff;
     font-size: 20px;
     font-weight: 700;
+    text-align: left;
 }
 
 .card-item__btn {
