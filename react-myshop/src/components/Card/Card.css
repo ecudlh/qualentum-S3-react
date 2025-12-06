@@ -27,6 +27,11 @@
     color: #4e4e4e;
     font-size: 14px;
     text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card-item__price {

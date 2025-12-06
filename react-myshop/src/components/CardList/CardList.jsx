@@ -7,8 +7,12 @@ import { ProductContext } from '../../context/ProductContext';
 
 function CardList() {
     const { searchBar } = useOutletContext();
-    const { products } = useContext(ProductContext);
+    const { products, loading, error } = useContext(ProductContext);
     const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(searchBar.toLowerCase()))
+
+    if (loading) return <p>Cargando productos...</p>;
+    if (error) return <p className="error">{error}</p>;
+    
     return (
         <>         
             {filteredProducts.length > 0 ? (
