@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
+import { api } from '../api';
 
 export const ProductContext = createContext();
 
@@ -12,6 +13,14 @@ export function ProductProvider({ children }) {
 
     const API_URL = "https://fakestoreapi.com/products";
 
+    const buildProductBody = (product) => ({
+        title: product.title,
+        price: parseFloat(product.price),
+        description: product.description,
+        image: product.imageUrl || "https://via.placeholder.com/150",
+        category: product.category || "general"
+    });
+
     useEffect(() => {
         let mounted = true;
 
@@ -19,11 +28,7 @@ export function ProductProvider({ children }) {
             try {
                 setLoading(true);
                 setError(null);
-
-                const res = await fetch(API_URL);
-                if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
-
-                const data = await res.json();
+                const { data } = await api.get("/products");
 
                 if (mounted) {
                     setProducts(data);
@@ -49,13 +54,7 @@ export function ProductProvider({ children }) {
     // Delete product
     const deleteProduct = async (id) => {
         try {
-            const res = await fetch(`https://fakestoreapi.com/products/${id}`, {
-            method: "DELETE",
-            });
-
-            if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
-
-            const data = await res.json();
+            const { data } = await api.delete(`/products/${id}`);
             console.log("Producto eliminado:", data);
 
             // Actualizamos el estado local para que la UI se vea reflejada
@@ -77,31 +76,16 @@ export function ProductProvider({ children }) {
     // Save product
     const saveProduct = async (updatedProduct) => {
         try {
-            // Construir el body para la API
-            const body = {
-                title: updatedProduct.title,
-                price: parseFloat(updatedProduct.price),
-                description: updatedProduct.description,
-                image: updatedProduct.imageUrl || "https://via.placeholder.com/150",
-                category: updatedProduct.category || "general"
-            };
+            // Construir el body para la API y PUT a la api
+            const body = buildProductBody(updatedProduct);
+            const { data } = await api.put(`/products/${updatedProduct.id}`, body);
 
-            const res = await fetch(`https://fakestoreapi.com/products/${updatedProduct.id}`, {
-                method: "PUT",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(body),
-            });
-
-            if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
-
-            const data = await res.json();
-
-            // Actualizamos el estado local para que la UI se vea reflejada
+            // Actualizar el estado local para que la UI se vea reflejada
             setProducts(prev =>
                 prev.map(p => p.id === data.id ? data : p)
             );
 
-            // Cerramos la modal
+            // Cerrar la modal
             setProductToEdit(null);
         } catch (err) {
             console.error("saveProduct:", err);
@@ -122,28 +106,10 @@ export function ProductProvider({ children }) {
         try {
             setAddingProduct(true);
 
-            const body = {
-                title: newProduct.title,
-                price: parseFloat(newProduct.price),
-                description: newProduct.description,
-                image: newProduct.imageUrl || "https://via.placeholder.com/150",
-                category: newProduct.category || "general"
-            };
-
-            // POST a la API
-            const res = await fetch("https://fakestoreapi.com/products", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(body)
-            });
-
-            if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
-
-            const createdProduct = await res.json(); // objeto devuelto por la API, incluye ID
-
-            setProducts(prev => [...prev, createdProduct]);
+            // Construir el body para la API y POST a la api
+            const body = buildProductBody(newProduct);
+            const { data } = await api.post("/products", body);
+            setProducts(prev => [...prev, data]);
 
             // Cerrar la modal
             setAddingProduct(false);
